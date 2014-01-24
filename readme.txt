@@ -4,7 +4,7 @@ Donate link: http://caseypatrickdriscoll.com
 Tags: dashboard, styling, admin, css, background
 Requires at least: 3.6
 Tested up to: 3.8.1
-Stable tag: 0.0.1
+Stable tag: 0.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,6 +19,18 @@ A plugin to easily customize your WordPress Dashboard
 
 == Changelog ==
 
+= 0.0.2 =
+
+Adds admin menu and sample page with heading
+
 = 0.0.1 =
 
 Initialize readme and plugin
+
+== Todo ==
+
+= Features =
+
+* Allow user to upload image
+* Allow user to change bg
+* Allow user to add custom css
