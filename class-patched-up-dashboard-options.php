@@ -25,28 +25,27 @@
 													'Edit Dashboard', 
 													'manage_options', 
 													'patched-up-dashboard-options', 
-													array( &$this, 'display_page' )
+													array( &$this, 'patched_up_dashboard_options_page' )
 			);		
 		}
 
 		public function patched_up_dashboard_options_page() {
-
-		}
-
-		public function display_page() {
 			if ( !current_user_can( 'manage_options' ) )  {
 				wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 			}
 
 			wp_enqueue_script( 'custom_wp_admin_script', plugin_dir_url(__FILE__) . '/js/script.js');
 			wp_enqueue_media();
+		
+			wp_register_style( 'custom_wp_admin_css', plugin_dir_url(__FILE__) . '/style.css', false, '1.0.0' );
+    	wp_enqueue_style( 'custom_wp_admin_css' );
 
 			echo '<div class="wrap">
 							<h2>' . __( 'Edit Dashboard' ) . '</h2>
 							<form action="options.php" method="post">';
 
 			if ( isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] == true )
-      	echo '<div class="updated fade"><p>' . __( 'Theme options updated.' ) . '</p></div>';
+      	echo 		'<div class="updated fade"><p>' . __( 'Theme options updated.' ) . '</p></div>';
 
 			settings_fields( 'patched_up_dashboard_options' );
 			do_settings_sections( $_GET['page'] );
@@ -70,10 +69,6 @@
 			elseif ( ! isset( $options[$id] ) )
 				$options[$id] = 0;
 
-			$field_class = '';
-			if ( $class != '' )
-				$field_class = ' class="' . $class . '"';
-
 			switch ( $type ) {
 
 				case 'image':
@@ -92,11 +87,10 @@
 					break;
 	
 				case 'textarea':
-					echo '<textarea class="' . $field_class . '" 
+					echo '<textarea class="' . $class . '" 
 													id="' . $id . '" 
 													name="patched_up_dashboard_options[' . $id . ']" 
-													placeholder="' . $std . '" 
-													rows="5" cols="30">' . 
+													placeholder="' . $std . '">' . 
 									wp_htmledit_pre( $options[$id] ) . 
 							 '</textarea>';
 
@@ -107,7 +101,7 @@
 
 				case 'text':
 				default:
-					echo '<input class="regular-text' . $field_class . '" 
+					echo '<input class="regular-text ' . $class . '" 
 											 type="text" 
 											 id="' . $id . '" 
 											 name="patched_up_dashboard_options[' . $id . ']" 
