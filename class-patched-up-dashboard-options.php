@@ -44,10 +44,12 @@
 
 			echo '<div class="wrap">
 							<h2>' . __( 'Edit Dashboard' ) . '</h2>
-							<form action="options.php" method="post">';
-
+							<form action="options.php" method="post" id="edit-dashboard">';
+							
 			if ( isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] == true )
       	echo 		'<div class="updated fade"><p>' . __( 'Theme options updated.' ) . '</p></div>';
+
+			submit_button('Save Changes', 'primary', 'submit', false);
 
 			settings_fields( 'patched_up_dashboard_options' );
 			do_settings_sections( $_GET['page'] );
@@ -80,13 +82,13 @@
 												 id="' . $id . '" 
 												 placeholder="' . $std . '" 
 											 	 value="' . esc_attr( $options[$id] ) . '" />
-									<input type="button" id="background_image_button" class="upload" value="Upload" /> 
+									<input type="button" id="' . $id . '_button" class="upload" value="Upload" /> 
 								</div>';
 					if ( $desc != '' )
-						echo '<br /><span class="description">' . $desc . '</span>';
+						echo '<p class="description">' . $desc . '</p>';
 					
 					if ( $options[$id] )
-						echo '<img src="' . esc_attr( $options[$id] ) . '" width="400px" />';
+						echo '<img src="' . esc_attr( $options[$id] ) . '" class="preview" />';
 
 					break;
 	
@@ -127,7 +129,7 @@
 				'desc'		=> 'This is a default description',
 				'std'			=> '',
 				'type'		=> 'text',
-				'section'	=> 'background',
+				'section'	=> 'dashboard',
 				'choices'	=> array(),
 				'class'		=> ''
 			);
@@ -183,7 +185,7 @@
 			$this->settings['header_logo'] = array(
 				'section'	=> 'navigation',
 				'title'   => __( 'Header Logo' ),
-				'desc'    => __( 'Enter the URL to your logo for the theme header.' ),
+				'desc'    => __( 'Enter the URL to your logo for the navigation bar.' ),
 				'type'    => 'image',
 				'std'     => ''
 			);
@@ -199,6 +201,22 @@
 				'std'     => ''
 			);
 
+			$this->settings['login_background_image'] = array(
+				'section'	=> 'login',
+				'title'   => __( 'Background Image' ),
+				'desc'    => __( 'This is the login background image.' ),
+				'type'    => 'image',
+				'std'     => ''
+			);				
+
+			$this->settings['login_custom_css'] = array(
+				'section'	=> 'login',
+				'title'   => __( 'Custom Styles' ),
+				'desc'    => __( 'Enter any custom CSS here to apply it to your login page.' ),
+				'std'     => '',
+				'type'    => 'textarea',
+				'class'   => 'code'
+			);
 
 		}
 

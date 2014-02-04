@@ -3,7 +3,7 @@
 /* Plugin Name: Patched Up Dashboard
  * Plugin URI: http://patchedupcreative.com/plugins/dashboard
  * Description: A plugin to easily customize your WordPress Dashboard
- * Version: 0.1.3
+ * Version: 0.2.0
  * Date: 01-24-14
  * Author: Casey Patrick Driscoll
  * Author URI: http://caseypatrickdriscoll.com
@@ -51,5 +51,14 @@ function patched_up_dashboard_option( $option ) {
 	else
 		return false;
 }
+
+function patched_up_login_styles(){
+	echo '<style>
+					body.login	{ background-image: url("' . patched_up_dashboard_option( 'login_background_image' ) . '"); }
+					.login h1 a { background-image: url("' . patched_up_dashboard_option( 'login_logo' ) . '"); }
+					' . patched_up_dashboard_option( 'login_custom_css' ) . '
+				</style>';
+}
+add_action('login_head', 'patched_up_login_styles');
 
 ?>
