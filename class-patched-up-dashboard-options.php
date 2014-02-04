@@ -10,7 +10,9 @@
 			$this->settings = array();
 			$this->get_settings();
 			
-			$this->sections['general'] = __( 'General Settings' );
+			$this->sections['background'] = __( 'Background Settings' );
+			$this->sections['navigation'] = __( 'Navigation Settings' );
+			$this->sections['login'] 			= __( 'Login Settings' );
 
 			add_action( 'admin_menu', array( &$this, 'add_pages' ) );
 			add_action( 'admin_init', array( &$this, 'register_settings' ) );
@@ -123,7 +125,7 @@
 				'desc'		=> 'This is a default description',
 				'std'			=> '',
 				'type'		=> 'text',
-				'section'	=> 'general',
+				'section'	=> 'background',
 				'choices'	=> array(),
 				'class'		=> ''
 			);
@@ -153,30 +155,48 @@
 
 		public function get_settings() {
 
+			/* Background Settings
+			==============================*/
+
 			$this->settings['background_image'] = array(
-				'section'	=> 'general',
+				'section'	=> 'background',
 				'title'   => __( 'Background Image' ),
 				'desc'    => __( 'This is the background image.' ),
 				'std'     => '',
 				'type'    => 'image',
 			);
-				
-			$this->settings['header_logo'] = array(
-				'section'	=> 'general',
-				'title'   => __( 'Header Logo' ),
-				'desc'    => __( 'Enter the URL to your logo for the theme header.' ),
-				'type'    => 'text',
-				'std'     => ''
-			);
-				
+							
 			$this->settings['custom_css'] = array(
-				'section'	=> 'general',
+				'section'	=> 'background',
 				'title'   => __( 'Custom Styles' ),
 				'desc'    => __( 'Enter any custom CSS here to apply it to your theme.' ),
 				'std'     => '',
 				'type'    => 'textarea',
 				'class'   => 'code'
 			);
+
+			/* Navigation Settings
+			==============================*/
+
+			$this->settings['header_logo'] = array(
+				'section'	=> 'navigation',
+				'title'   => __( 'Header Logo' ),
+				'desc'    => __( 'Enter the URL to your logo for the theme header.' ),
+				'type'    => 'image',
+				'std'     => ''
+			);
+
+			/* Login Settings
+			==============================*/
+
+			$this->settings['login_logo'] = array(
+				'section'	=> 'login',
+				'title'   => __( 'Login Logo' ),
+				'desc'    => __( 'Enter the URL to your logo for the theme header.' ),
+				'type'    => 'image',
+				'std'     => ''
+			);
+
 
 		}
 
