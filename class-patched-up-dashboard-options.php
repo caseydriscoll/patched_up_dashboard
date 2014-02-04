@@ -23,12 +23,16 @@
 
 		/* http://codex.wordpress.org/Administration_Menus */
 		public function add_pages() {
-			add_dashboard_page(	'Edit Dashboard', 
-													'Edit Dashboard', 
-													'manage_options', 
-													'patched-up-dashboard-options', 
-													array( &$this, 'patched_up_dashboard_options_page' )
+			$admin_page = add_dashboard_page(	'Edit Dashboard', 
+																				'Edit Dashboard', 
+																				'manage_options', 
+																				'patched-up-dashboard-options', 
+																				array( &$this, 'patched_up_dashboard_options_page' )
 			);		
+			add_action( 'admin_print_scripts-' . $admin_page, array( &$this, 'scripts' ) );
+		}
+		public function scripts() {
+			wp_print_scripts( 'jquery-ui-tabs' );
 		}
 
 		public function patched_up_dashboard_options_page() {
@@ -52,11 +56,63 @@
 			submit_button('Save Changes', 'primary', 'submit', false);
 
 			settings_fields( 'patched_up_dashboard_options' );
+
+			echo			'<div class="ui-tabs">
+										<ul class="ui-tabs-nav">';
+
+			foreach ( $this->sections as $section )
+				echo '<li><a href="#' . strtolower( str_replace( ' ', '_', $section ) ) . '">' . $section . '</a></li>';
+
+			echo 					'</ul>';
 			do_settings_sections( $_GET['page'] );
+
+			echo 			'</div>'; // close ui-tabs
 
 			submit_button();
 	
-			echo 		'</form>';
+			echo 		'</form>
+							 <script type="text/javascript">
+									jQuery(document).ready(function($) {
+										var wrapped = $(".wrap h3").wrap("<div class=\"ui-tabs-panel\">");
+										wrapped.each(function() {
+											$(this).parent().append($(this).parent().nextUntil("div.ui-tabs-panel"));	
+										});
+
+										$(".ui-tabs-panel").each(function(index) {
+											var str = $(this).children("h3").text().replace(/\s/g, "_");
+											$(this).attr("id", str.toLowerCase());
+											if (index > 0)
+												$(this).addClass("ui-tabs-hide");
+										});
+
+										$(".ui-tabs").tabs({ fx: { opacity: "toggle", duration: "fast" } });
+
+										$("input[type=text], textarea").each(function() {
+											if ($(this).val() == $(this).attr("placeholder"))
+												$(this).css("color", "#999");
+										});
+
+										$("input[type=text], textarea").focus(function() {
+											if ($(this).val() == $(this).attr("placeholder")) {
+												$(this).val("");
+												$(this).css("color", "#000");
+											}
+										}).blur(function() {
+											if ($(this).val() == "" || $(this).val() == $(this).attr("placeholder")) {
+												$(this).val($(this).attr("placeholder"));
+												$(this).css("color", "#999");
+											}
+										});
+
+										$(".wrap h3, .wrap table").show();
+
+										if ($.browser.mozilla) 
+											$("form").attr("autocomplete", "off");
+									});
+							 </script>';
+
+			echo '</div>'; // wrap
+
 		}
 
 		public function display_section() {
