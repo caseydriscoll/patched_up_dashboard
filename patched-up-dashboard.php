@@ -3,7 +3,7 @@
 /* Plugin Name: Patched Up Dashboard
  * Plugin URI: http://patchedupcreative.com/plugins/dashboard
  * Description: A plugin to easily customize your WordPress Dashboard
- * Version: 0.0.2
+ * Version: 0.1.0
  * Date: 01-24-14
  * Author: Casey Patrick Driscoll
  * Author URI: http://caseypatrickdriscoll.com
@@ -26,24 +26,31 @@
  *   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-/* http://codex.wordpress.org/Administration_Menus */
-add_action( 'admin_menu', 'patched_up_dashboard_menu' );
+require_once( 'class-patched-up-dashboard-options.php' );
 
-function patched_up_dashboard_menu() {
-	add_dashboard_page(	'Edit Dashboard', 
-											'Edit Dashboard', 
-											'manage_options', 
-											'edit-dashboard', 
-											'patched_up_dashboard_options' );
+new Patched_Up_Dashboard_Options();
+
+/* https://codex.wordpress.org/Plugin_API/Action_Reference/admin_enqueue_scripts */
+function patched_up_dashboard_styles($hook) {
+    if( 'index.php' != $hook )
+        return;
+		wp_register_style( 'custom_wp_admin_css', plugin_dir_url(__FILE__) . '/style.css', false, '1.0.0' );
+    wp_enqueue_style( 'custom_wp_admin_css' );
+	
+		echo '<style>
+						#wpwrap {
+							background: url("' . patched_up_dashboard_option( 'background_image' ) . '") center;
+						}
+					</style>';
 }
+add_action( 'admin_enqueue_scripts', 'patched_up_dashboard_styles' );
 
-function patched_up_dashboard_options() {
-	if ( !current_user_can( 'manage_options' ) )  {
-		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
-	}
-	echo '<div class="wrap">';
-	echo '<h2>Edit Dashboard</h2>';
-	echo '</div>';
+function patched_up_dashboard_option( $option ) {
+	$options = get_option( 'patched_up_dashboard_options' );
+	if ( isset( $options[$option] ) )
+		return $options[$option];
+	else
+		return false;
 }
 
 ?>
