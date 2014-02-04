@@ -10,7 +10,7 @@
 			$this->settings = array();
 			$this->get_settings();
 			
-			$this->sections['background'] = __( 'Background Settings' );
+			$this->sections['dashboard'] 	= __( 'Dashboard Settings' );
 			$this->sections['navigation'] = __( 'Navigation Settings' );
 			$this->sections['login'] 			= __( 'Login Settings' );
 
@@ -82,6 +82,8 @@
 											 	 value="' . esc_attr( $options[$id] ) . '" />
 									<input type="button" id="background_image_button" class="upload" value="Upload" /> 
 								</div>';
+					if ( $desc != '' )
+						echo '<br /><span class="description">' . $desc . '</span>';
 					
 					if ( $options[$id] )
 						echo '<img src="' . esc_attr( $options[$id] ) . '" width="400px" />';
@@ -155,21 +157,21 @@
 
 		public function get_settings() {
 
-			/* Background Settings
+			/* Dashboard Settings
 			==============================*/
 
-			$this->settings['background_image'] = array(
-				'section'	=> 'background',
+			$this->settings['dashboard_background_image'] = array(
+				'section'	=> 'dashboard',
 				'title'   => __( 'Background Image' ),
-				'desc'    => __( 'This is the background image.' ),
+				'desc'    => __( 'This is the dashboard background image.' ),
 				'std'     => '',
 				'type'    => 'image',
 			);
 							
-			$this->settings['custom_css'] = array(
-				'section'	=> 'background',
+			$this->settings['dashboard_custom_css'] = array(
+				'section'	=> 'dashboard',
 				'title'   => __( 'Custom Styles' ),
-				'desc'    => __( 'Enter any custom CSS here to apply it to your theme.' ),
+				'desc'    => __( 'Enter any custom CSS here to apply it to your dashboard.' ),
 				'std'     => '',
 				'type'    => 'textarea',
 				'class'   => 'code'
@@ -192,7 +194,7 @@
 			$this->settings['login_logo'] = array(
 				'section'	=> 'login',
 				'title'   => __( 'Login Logo' ),
-				'desc'    => __( 'Enter the URL to your logo for the theme header.' ),
+				'desc'    => __( 'Enter the URL to your logo for the login page.' ),
 				'type'    => 'image',
 				'std'     => ''
 			);
