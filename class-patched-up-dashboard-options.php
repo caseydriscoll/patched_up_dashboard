@@ -40,11 +40,17 @@
 				wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 			}
 
-			wp_enqueue_script( 'custom_wp_admin_script', plugin_dir_url(__FILE__) . '/js/script.js');
+			wp_enqueue_script( 'custom_wp_admin_script', 
+												 plugin_dir_url(__FILE__) . '/js/script.js', 
+												 array( 'wp-color-picker' )
+			);
 			wp_enqueue_media();
 		
 			wp_register_style( 'custom_wp_admin_css', plugin_dir_url(__FILE__) . '/style.css', false, '1.0.0' );
     	wp_enqueue_style( 'custom_wp_admin_css' );
+
+			wp_enqueue_style( 'wp-color-picker' );
+
 
 			echo '<div class="wrap patched-up-form">
 							<form action="options.php" method="post" id="edit-dashboard">
@@ -183,6 +189,19 @@
 					echo '';
 					break;
 
+				case 'color':
+					echo '<input class="color-text ' . $class . '" 
+											 type="text" 
+											 id="' . $id . '" 
+											 name="patched_up_dashboard_options[' . $id . ']" 
+											 placeholder="' . $std . '" 
+											 value="' . esc_attr( $options[$id] ) . '" />';
+
+		 			if ( $desc != '' )
+		 				echo '<br /><span class="description">' . $desc . '</span>';
+
+		 			break;
+
 				case 'text':
 				default:
 					echo '<input class="regular-text ' . $class . '" 
@@ -255,6 +274,14 @@
 				'std'			=> '',
 				'type'		=> 'attachment',
 			);
+
+			$this->settings['dashboard_background_color'] = array(
+				'section' => 'dashboard',
+				'title'		=> __( 'Background Color' ),
+				'desc'		=> __( 'This is the dashboard background color' ),
+				'std'			=> '',
+				'type'		=> 'color',
+			);
 							
 			$this->settings['dashboard_custom_css'] = array(
 				'section'	=> 'dashboard',
@@ -293,6 +320,14 @@
 				'title'   => __( 'Background Image' ),
 				'desc'    => __( 'This is the login background image.' ),
 				'type'    => 'image',
+				'std'     => ''
+			);				
+
+			$this->settings['login_background_color'] = array(
+				'section'	=> 'login',
+				'title'   => __( 'Background Color' ),
+				'desc'    => __( 'This is the login background color.' ),
+				'type'    => 'color',
 				'std'     => ''
 			);				
 

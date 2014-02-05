@@ -4,7 +4,7 @@ Donate link: http://caseypatrickdriscoll.com
 Tags: dashboard, styling, admin, css, background
 Requires at least: 3.6
 Tested up to: 3.8.1
-Stable tag: 0.4.3
+Stable tag: 0.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,6 +18,9 @@ A plugin to easily customize your WordPress Dashboard
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Changelog ==
+
+= 0.5.0 =
+Adds granular control over dashboard and login background styling including color
 
 = 0.4.3 =
 Fixes 'No photo preview if no original photo' with empty image if none set
@@ -61,12 +64,13 @@ Initialize readme and plugin
 == Todo ==
 
 = Features =
-
 * Live edit/update box on Dashboard page
 * Themes to control styling
 * Validate entries
 * Navigation styling
-* Granular control over background styling
+* Upload image directly from url
+* Preview on 'Edit Dashboard' page? (probably not)
+* Granular control over background styling including placement, attachment and repeat
 
 = Refactoring =
 * Better commenting
@@ -76,4 +80,3 @@ Initialize readme and plugin
 
 = Bugs =
 * Is the 'updated' fader supposed to actually fade?
-

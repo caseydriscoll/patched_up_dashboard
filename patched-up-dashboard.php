@@ -3,7 +3,7 @@
 /* Plugin Name: Patched Up Dashboard
  * Plugin URI: http://patchedupcreative.com/plugins/dashboard
  * Description: A plugin to easily customize your WordPress Dashboard
- * Version: 0.4.3
+ * Version: 0.5.0
  * Date: 01-24-14
  * Author: Casey Patrick Driscoll
  * Author URI: http://caseypatrickdriscoll.com
@@ -35,9 +35,12 @@ function patched_up_dashboard_styles($hook) {
     if( 'index.php' != $hook )
         return;
 	
+		$options = get_option( 'patched_up_dashboard_options' );
 		echo '<style>
 						#wpwrap {
-							background: url("' . patched_up_dashboard_option( 'dashboard_background_image' ) . '") center;
+							background: url("' . $options[dashboard_background_image]  . '") 
+							' . $options[dashboard_background_color] . '
+							center;
 						}
 						' . patched_up_dashboard_option( 'dashboard_custom_css' ) . '
 					</style>';
@@ -53,9 +56,14 @@ function patched_up_dashboard_option( $option ) {
 }
 
 function patched_up_login_styles(){
+	$options = get_option( 'patched_up_dashboard_options' );
 	echo '<style>
-					body.login	{ background-image: url("' . patched_up_dashboard_option( 'login_background_image' ) . '"); }
-					.login h1 a { background-image: url("' . patched_up_dashboard_option( 'login_logo' ) . '"); }
+					body.login	{ 
+						background: url("' . $options[login_background_image] . '")
+						' . $options[login_background_color] . '
+						center; 
+					}
+					.login h1 a { background-image: url("' . $options[login_logo] . '"); }
 					' . patched_up_dashboard_option( 'login_custom_css' ) . '
 				</style>';
 }
