@@ -139,13 +139,24 @@
 												 id="' . $id . '" 
 												 placeholder="' . $std . '" 
 											 	 value="' . esc_attr( $options[$id] ) . '" />
+									<input type="hidden" 
+												 name="patched_up_dashboard_options[' . $id . '_attachment_id]"
+												 value="' . esc_attr( $options[$id . '_attachment_id']) . '"
+												 id="' . $id . '_attachment_id" />
 									<input type="button" id="' . $id . '_button" class="button upload" value="Upload" /> 
 								</div>';
 					if ( $desc != '' )
 						echo '<p class="description">' . $desc . '</p>';
 					
-					if ( $options[$id] )
-						echo '<img src="' . esc_attr( $options[$id] ) . '" class="preview" />';
+					if ( $options[$id] ) {
+						$attachment_id = $id . "_attachment_id";
+						$attachment_preview_attr = array(
+							'id'		=> $id . "_preview",
+							'class' => "preview",
+						);
+						echo wp_get_attachment_image( $options[$attachment_id], array(400, 225), 0, $attachment_preview_attr );
+					}
+	
 
 					break;
 	
@@ -160,6 +171,10 @@
 					if ( $desc != '' )
 						echo '<br /><span class="description">' . $desc . '</span>';
 
+					break;
+
+				case 'attachment':
+					echo '';
 					break;
 
 				case 'text':
@@ -226,6 +241,14 @@
 				'std'     => '',
 				'type'    => 'image',
 			);
+
+			$this->settings['dashboard_background_image_attachment_id'] = array(
+				'section' => 'dashboard',
+				'title'		=> '',
+				'desc'		=> '',
+				'std'			=> '',
+				'type'		=> 'attachment',
+			);
 							
 			$this->settings['dashboard_custom_css'] = array(
 				'section'	=> 'dashboard',
@@ -235,6 +258,7 @@
 				'type'    => 'textarea',
 				'class'   => 'code'
 			);
+
 
 			/* Navigation Settings
 			==============================*/
