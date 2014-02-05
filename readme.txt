@@ -4,7 +4,7 @@ Donate link: http://caseypatrickdriscoll.com
 Tags: dashboard, styling, admin, css, background
 Requires at least: 3.6
 Tested up to: 3.8.1
-Stable tag: 0.3.0
+Stable tag: 0.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,6 +18,10 @@ A plugin to easily customize your WordPress Dashboard
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Changelog ==
+
+= 0.3.1 =
+
+Tweaks visual aesthetics.
 
 = 0.3.0 =
 
@@ -63,7 +67,6 @@ Initialize readme and plugin
 * Granular control over background styling
 
 = Refactoring =
-* Styling of admin page
 * Better commenting
 * Actual refactoring
 

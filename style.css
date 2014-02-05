@@ -1,3 +1,21 @@
+.patched-up-form { 
+	max-width: 600px;
+}
+
+.patched-up-form h2 {
+	float:left;
+	margin-bottom: 15px;
+}
+
+.patched-up-form .button.top {
+	float: right;
+	margin-top: 10px;
+}
+
+.patched-up-form td {
+	min-width: 400px;
+}
+
 textarea.code {
 	width: 400px; height: 200px;
 }
@@ -8,14 +26,34 @@ textarea.code {
 	margin: 5px 0;
 }
 
+.uploader input[type="text"] {
+	width: 325px; height: 28px;
+}
+
 #edit-dashboard p.description {
 	font-size: 13px;
 }
 
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+
+
+/* jQuery Tabs */
+.ui-tabs {
+	clear: both;
+}
 .ui-tabs-nav {
 	border-bottom: 1px solid #ccc;
-	height: 29px;
-	margin: 20px 0;
+	height: 39px;
+	margin: 20px 0 0;
 	padding: 0;
 }
 
@@ -29,15 +67,15 @@ textarea.code {
 	padding: 6px 20px;
 	font-weight: bold;
 	border-style: solid;
-	border-color: #CCC #CCC #F1F1F1;
+	border-color: #CCC #CCC #fff;
 	border-width: 1px 1px 0;
 	outline: none;
 	color: #C1C1C1;
 	text-shadow: rgba(255, 255, 255, 1) 0 1px 0;
 	display: inline-block;
-	padding: 4px 14px 6px;
+	padding: 10px 14px; 
 	text-decoration: none;
-	margin: 0 6px -1px 0;
+	margin: 0 10px 0 0;
 	-moz-border-radius: 5px 5px 0 0;
 	-webkit-border-top-left-radius: 5px;
 	-webkit-border-top-right-radius: 5px;
@@ -51,10 +89,16 @@ textarea.code {
 .ui-tabs-nav li.ui-state-active a {
 	border-width: 1px;
 	color: #464646;
+	background: #fff;
 }
 
 .ui-tabs-panel {
 	clear: both;
+	padding: 10px;
+	border-style: solid;
+	border-color: #CCC; 
+	border-width: 0 1px 1px 1px;
+	background: #fff;
 }
 
 .ui-tabs-panel h3 {

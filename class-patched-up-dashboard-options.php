@@ -46,14 +46,15 @@
 			wp_register_style( 'custom_wp_admin_css', plugin_dir_url(__FILE__) . '/style.css', false, '1.0.0' );
     	wp_enqueue_style( 'custom_wp_admin_css' );
 
-			echo '<div class="wrap">
-							<h2>' . __( 'Edit Dashboard' ) . '</h2>
-							<form action="options.php" method="post" id="edit-dashboard">';
+			echo '<div class="wrap patched-up-form">
+							<form action="options.php" method="post" id="edit-dashboard">
+							<h2>' . __( 'Edit Dashboard' ) . '</h2>';
 							
+			submit_button('Save Changes', 'primary top', 'submit', false);
+
 			if ( isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] == true )
       	echo 		'<div class="updated fade"><p>' . __( 'Theme options updated.' ) . '</p></div>';
 
-			submit_button('Save Changes', 'primary', 'submit', false);
 
 			settings_fields( 'patched_up_dashboard_options' );
 
@@ -138,7 +139,7 @@
 												 id="' . $id . '" 
 												 placeholder="' . $std . '" 
 											 	 value="' . esc_attr( $options[$id] ) . '" />
-									<input type="button" id="' . $id . '_button" class="upload" value="Upload" /> 
+									<input type="button" id="' . $id . '_button" class="button upload" value="Upload" /> 
 								</div>';
 					if ( $desc != '' )
 						echo '<p class="description">' . $desc . '</p>';
