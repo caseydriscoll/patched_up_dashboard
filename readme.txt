@@ -4,7 +4,7 @@ Donate link: http://caseypatrickdriscoll.com
 Tags: dashboard, styling, admin, css, background
 Requires at least: 3.6
 Tested up to: 3.8.1
-Stable tag: 0.4.2
+Stable tag: 0.4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,52 +19,43 @@ A plugin to easily customize your WordPress Dashboard
 
 == Changelog ==
 
-= 0.4.2 =
+= 0.4.3 =
+Fixes 'No photo preview if no original photo' with empty image if none set
 
-Fixes "Theme options updated" text and adds link to dashboard
+= 0.4.2 =
+Fixes 'Theme options updated' text and adds link to dashboard
 
 = 0.4.1 =
-
 Fixes 'Image size is wrong if previous image was small (change attr?)'
 
 = 0.4.0 =
-
 Adds background image preview. Will need tweaking.
 
 = 0.3.1 =
-
 Tweaks visual aesthetics.
 
 = 0.3.0 =
-
 Adds jQuery ui tabs. Will need tweaking.
 
 = 0.2.0 =
-
 Adds minimal login page customization
 
 = 0.1.3 =
-
 Refactors 'background' to 'dashboard' options
 
 = 0.1.2 =
-
 Sets up navigation and login sections
 
 = 0.1.1 =
-
 User can now add custom css
 
 = 0.1.0 =
-
 User can now upload image and saving using options
 
 = 0.0.2 =
-
 Adds admin menu and sample page with heading
 
 = 0.0.1 =
-
 Initialize readme and plugin
 
 == Todo ==
@@ -79,7 +70,10 @@ Initialize readme and plugin
 
 = Refactoring =
 * Better commenting
-* Actual refactoring
+* Actual refactoring, rearrange methods/classes if necessary
+* Move all js to js
+* Figure out how to classify attachment so it doesn't show
 
 = Bugs =
-* No photo preview if no original photo
+* Is the 'updated' fader supposed to actually fade?
+

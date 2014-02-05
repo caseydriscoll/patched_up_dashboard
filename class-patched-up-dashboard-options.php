@@ -159,6 +159,8 @@
 							'class' => "preview",
 						);
 						echo wp_get_attachment_image( $options[$attachment_id], array(400, 225), 0, $attachment_preview_attr );
+					} else {
+						echo '<img id="' . $id . '_preview" class="preview" />';
 					}
 	
 
