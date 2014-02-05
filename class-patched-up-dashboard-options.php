@@ -53,7 +53,11 @@
 			submit_button('Save Changes', 'primary top', 'submit', false);
 
 			if ( isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] == true )
-      	echo 		'<div class="updated fade"><p>' . __( 'Theme options updated.' ) . '</p></div>';
+      	echo 		'<div class="updated fade">
+									<p>' . __( 'Dashboard updated. ' ) . '
+										<a href="/wp-admin">' . __( 'See for yourself.' ) . '</a>
+									</p>
+								</div>';
 
 
 			settings_fields( 'patched_up_dashboard_options' );
