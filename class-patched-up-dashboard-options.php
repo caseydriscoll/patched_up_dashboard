@@ -306,15 +306,35 @@
 				'title'   => __( 'Background Repeat' ),
 				'desc'		=> __( 'This is the dashboard background repeat' ),
 				'type'    => 'select',
-				'std'     => 'Repeat',
+				'std'     => '(Repeat)',
 				'choices' => array(
-					'repeat' 		=> 'Repeat',
+					'' 					=> '(Repeat)',
 					'no-repeat' => 'No Repeat',
 					'repeat-y' 	=> 'Repeat Y',
 					'repeat-x' 	=> 'Repeat X',
 				)
 			);
-							
+		
+			$this->settings['dashboard_background_position'] = array(
+				'section' => 'dashboard',
+				'title'   => __( 'Background Position' ),
+				'desc'		=> __( 'This is the dashboard background position' ),
+				'type'    => 'select',
+				'std'     => '(None)',
+				'choices' => array(
+					'' 								=> '(None)',
+					'left top' 				=> 'Left Top',
+					'left center' 		=> 'Left Center',
+					'left bottom' 		=> 'Left Bottom',
+					'center top' 			=> 'Center Top',
+					'center center' 	=> 'Center Center',
+					'center bottom' 	=> 'Center Bottom',
+					'right top' 			=> 'Right Top',
+					'right center' 		=> 'Right Center',
+					'right bottom' 		=> 'Right Bottom',
+				)
+			);
+						
 			$this->settings['dashboard_custom_css'] = array(
 				'section'	=> 'dashboard',
 				'title'   => __( 'Custom Styles' ),
