@@ -334,6 +334,19 @@
 					'right bottom' 		=> 'Right Bottom',
 				)
 			);
+		
+			$this->settings['dashboard_background_attachment'] = array(
+				'section' => 'dashboard',
+				'title'   => __( 'Background Attachment' ),
+				'desc'		=> __( 'This is the dashboard background attachment' ),
+				'type'    => 'select',
+				'std'     => '(Scroll)',
+				'choices' => array(
+					'' 			=> '(Scroll)',
+					'fixed' => 'Fixed',
+					'local' => 'Local',
+				)
+			);
 						
 			$this->settings['dashboard_custom_css'] = array(
 				'section'	=> 'dashboard',
