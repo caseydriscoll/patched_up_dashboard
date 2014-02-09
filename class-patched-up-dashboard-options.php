@@ -202,6 +202,23 @@
 
 		 			break;
 
+				case 'select':
+					echo '<select class="select' . $class . '" 
+												name="patched_up_dashboard_options[' . $id . ']">';
+
+					foreach ( $choices as $value => $label )
+						echo '<option value="' . esc_attr( $value ) . '"' . 
+													selected( $options[$id], $value, false ) . '>' . 
+														$label . 
+								 '</option>';
+
+					echo '</select>';
+
+					if ( $desc != '' )
+						echo '<br /><span class="description">' . $desc . '</span>';
+
+					break;
+
 				case 'text':
 				default:
 					echo '<input class="regular-text ' . $class . '" 
@@ -239,6 +256,7 @@
 				'desc'			=> $desc,
 				'std'				=> $std,
 				'label_for'	=> $id,
+				'choices'	 	=> $choices,
 				'class'			=> $class
 			);
 
@@ -281,6 +299,20 @@
 				'desc'		=> __( 'This is the dashboard background color' ),
 				'std'			=> '',
 				'type'		=> 'color',
+			);
+	
+			$this->settings['dashboard_background_repeat'] = array(
+				'section' => 'dashboard',
+				'title'   => __( 'Background Repeat' ),
+				'desc'		=> __( 'This is the dashboard background repeat' ),
+				'type'    => 'select',
+				'std'     => 'Repeat',
+				'choices' => array(
+					'repeat' 		=> 'Repeat',
+					'no-repeat' => 'No Repeat',
+					'repeat-y' 	=> 'Repeat Y',
+					'repeat-x' 	=> 'Repeat X',
+				)
 			);
 							
 			$this->settings['dashboard_custom_css'] = array(
