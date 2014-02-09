@@ -395,6 +395,54 @@
 				'type'    => 'color',
 				'std'     => ''
 			);				
+	
+			$this->settings['login_background_repeat'] = array(
+				'section' => 'login',
+				'title'   => __( 'Background Repeat' ),
+				'desc'		=> __( 'This is the login background repeat' ),
+				'type'    => 'select',
+				'std'     => '(Repeat)',
+				'choices' => array(
+					'' 					=> '(Repeat)',
+					'no-repeat' => 'No Repeat',
+					'repeat-y' 	=> 'Repeat Y',
+					'repeat-x' 	=> 'Repeat X',
+				)
+			);
+		
+			$this->settings['login_background_position'] = array(
+				'section' => 'login',
+				'title'   => __( 'Background Position' ),
+				'desc'		=> __( 'This is the login background position' ),
+				'type'    => 'select',
+				'std'     => '(None)',
+				'choices' => array(
+					'' 								=> '(None)',
+					'left top' 				=> 'Left Top',
+					'left center' 		=> 'Left Center',
+					'left bottom' 		=> 'Left Bottom',
+					'center top' 			=> 'Center Top',
+					'center center' 	=> 'Center Center',
+					'center bottom' 	=> 'Center Bottom',
+					'right top' 			=> 'Right Top',
+					'right center' 		=> 'Right Center',
+					'right bottom' 		=> 'Right Bottom',
+				)
+			);
+		
+			$this->settings['login_background_attachment'] = array(
+				'section' => 'login',
+				'title'   => __( 'Background Attachment' ),
+				'desc'		=> __( 'This is the login background attachment' ),
+				'type'    => 'select',
+				'std'     => '(Scroll)',
+				'choices' => array(
+					'' 			=> '(Scroll)',
+					'fixed' => 'Fixed',
+					'local' => 'Local',
+				)
+			);
+						
 
 			$this->settings['login_custom_css'] = array(
 				'section'	=> 'login',

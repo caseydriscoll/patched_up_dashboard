@@ -4,7 +4,7 @@ Donate link: http://caseypatrickdriscoll.com
 Tags: dashboard, styling, admin, css, background
 Requires at least: 3.6
 Tested up to: 3.8.1
-Stable tag: 0.5.3
+Stable tag: 0.5.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,14 +19,17 @@ A plugin to easily customize your WordPress Dashboard
 
 == Changelog ==
 
+= 0.5.4 =
+Adds granular control over login background styling including repeat, position and attachment 
+
 = 0.5.3 =
-Adds granular control over dashboard and login background styling including attachment 
+Adds granular control over dashboard background styling including attachment 
 
 = 0.5.2 =
-Adds granular control over dashboard and login background styling including position
+Adds granular control over dashboard background styling including position
 
 = 0.5.1 =
-Adds granular control over dashboard and login background styling including repeat 
+Adds granular control over dashboard background styling including repeat 
 
 = 0.5.0 =
 Adds granular control over dashboard and login background styling including color
@@ -79,7 +82,6 @@ Initialize readme and plugin
 * Navigation styling
 * Upload image directly from url
 * Preview of 'Edit Dashboard' page? (probably not)
-* Granular control over login background styling including position, repeat, attachment 
 * Show print out of currently compiled css
 
 = Refactoring =
